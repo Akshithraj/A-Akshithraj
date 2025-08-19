@@ -1,0 +1,20 @@
+import openai
+openai.api_key="s"
+  def open_ai(prompt):
+       response =openai.chat.completions.create (
+           
+           model = "gpt-3.5-turbo",
+           messages = [{
+              "role":"user",
+               "context" :prompt
+              }]
+
+            )
+       
+       return response.choices[0].message.content.strip()
+  while True:
+    human = input("human input :")
+    if human.lower() in ["bye", "quit"]:
+        break
+    response = open_ai(human) # Call the function to get the chatbot response
+    print("output: ", response) # Print the response
